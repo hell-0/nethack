@@ -1,0 +1,362 @@
+## More usefull information look at https://nethack.org/docs/nh361/Guidebook.txt
+
+### Common options
+ 
+  ## Automatically dig if you are wielding a digging tool and moving into a place that can be dug
+  #OPTIONS=autodig
+  ## Walking into a door attempts to open it
+  #OPTIONS=autoopen
+  ## Allow saving and loading bones files.
+  #OPTIONS=bones
+  ## Show out-of-sight areas of lit rooms
+  #OPTIONS=dark_room
+  ## Change symbols 
+  #SYMBOLS=S_ghost:X 
+
+  #OPTIONS=paranoid_confirmation:Confirm quit attack pray wand Remove ## Require explicit yes for some prompts
+
+  ## Show your accumulated experience points on bottom line
+  OPTIONS=showexp
+  ## Show your approximate accumulated score on bottom line 
+  OPTIONS=showscore 
+  ## Show  the  elapsed  game  time in turns on bottom line
+  OPTIONS=time 
+  ## Show colored text if possible
+  OPTIONS=color 
+  ## Visually  distinguish  pets from similar animals
+  
+  OPTIONS=hilite_pet
+  ## Visually  distinguish  piles of objects from individual objects
+  OPTIONS=hilite_pile 
+  ## Show corridor squares seen by night vision or  a  light  source held by your character as lit 
+  OPTIONS=lit_corridor 
+   ## Use  digit  keys instead of letters to move
+  
+  OPTIONS=number_pad 
+  #  y  k  u          7  8  9
+  #   \ | /            \ | /
+  #  h- . -l          4- . -6
+  #   / | \            / | \
+  #  b  j  n          1  2  3
+  #            (if number_pad is set)
+ 
+  ## Changes the extended commands interface to  pop-up  a  menu  of available commands.
+  OPTIONS=extmenu 
+  ## Display a sparkly effect when a monster (including yourself) is hit by an attack to which it is resistant (default  on).
+  OPTIONS=sparkle 
+  ## Toggle the autopickup off
+  OPTIONS=noautopickup 
+  ## Allows you to change the way recalled messages  are  displayed.
+  OPTIONS=msg_window:full 
+
+  ## Set the name of the symbol set that you want to load.
+  OPTIONS=symset:DECgraphics 
+  ## If  NetHack can, it should try and display on the entire screen rather than in a window
+  OPTIONS=fullscreen
+
+
+## Colored menus. Regular expressions allowed.
+  OPTIONS=menucolors
+#    MENUCOLOR=" gold "=yellow&dim
+#    MENUCOLOR=" blessed "=green
+#    MENUCOLOR=" holy "=green
+#    MENUCOLOR=" cursed "=red
+#    MENUCOLOR=" unholy "=red
+#    MENUCOLOR=" cursed .* (being worn)"=orange&underline
+
+
+#-------------#
+# Menu Colors #
+#-------------#
+
+# Color scheme:
+
+# red = cursed
+# orange = cursed water/paper, -enchant, or bad/dangerous stuff
+# cyan = blessed
+# lightcyan = holy water/paper, +enchant, or "special purpose" stuff
+# white = uncursed water/paper
+
+# green = useful, always carry
+# lightgreen = emergency/very useful, always have one in open inventory
+# magenta = special goodies, probably leave in stash
+# lightmagenta = very special goodies (magic marker, wishes, poly)
+# yellow = danger (trice corpse, BoH aspode) or Unique Items
+# brown = worthless crap
+# lightblue = un-ID'd crap
+# blue is too dim to read
+
+# Blessed, cursed, enchanted
+MENUCOLOR=" blessed"=cyan
+MENUCOLOR=" \+[1-9]"=lightcyan
+MENUCOLOR=" \-[1-9]"=orange
+MENUCOLOR=" cursed"=red
+
+# Un-ID'd
+MENUCOLOR=" (amulet|ring$|potion|scroll|spellbook|wand|gem|tin$|tins$|bag)"=lightblue
+MENUCOLOR=" (amulet|ring|potion|scroll|spellbook|wand|gem|tin|bag)s? (of|called|versus)"=white&none
+MENUCOLOR=" cursed.* (tin|bag)"=red
+MENUCOLOR=" small bag"=white&none
+MENUCOLOR=" called .+ or "=lightblue
+MENUCOLOR=" called .*\?"=lightblue
+MENUCOLOR=" gray stone"=lightblue&underline
+MENUCOLOR=" (piece of cloth|opera cloak|ornamental cope|tattered cape|conical hat)"=lightblue
+MENUCOLOR=" (plumed|etched|crested|visored) helmet"=lightblue
+MENUCOLOR=" (old|padded|riding|fencing) gloves"=lightblue
+MENUCOLOR=" (mud|buckled|riding|snow|hiking|combat|jungle) boots"=lightblue
+MENUCOLOR=" (piece of cloth|opera cloak|ornamental cope|tattered cape|conical hat)"=lightblue
+
+# Armor
+MENUCOLOR=" dragon scale"=lightmagenta
+MENUCOLOR=" (gloves|gauntlets|yugake)"=lightgreen
+MENUCOLOR=" cursed.* (gloves|gauntlets|yugake)"=lightgreen&underline
+MENUCOLOR=" (levitation boots|boots called lev)"=green
+MENUCOLOR=" helm.* opposite"=lightcyan
+MENUCOLOR=" (gauntlets|gloves|boots) .* fumbl"=orange
+MENUCOLOR=" fumble boots"=orange
+MENUCOLOR=" dunce cap"=orange&underline
+
+# Tools
+MENUCOLOR=" (magic lamp|lamp called magic)"=magenta
+MENUCOLOR=" blessed (magic lamp|lamp called magic)"=lightmagenta
+MENUCOLOR=" magic marker"=lightmagenta
+MENUCOLOR=" (blessed|cursed) magic marker"=lightmagenta&underline
+MENUCOLOR=" magic marker.* \(1:[0-3]\)"=brown
+
+MENUCOLOR=" .*unicorn horn"=lightgreen
+MENUCOLOR=" cursed.* unicorn horn"=lightgreen&underline
+MENUCOLOR=" (blindfold|towel)"=lightgreen
+MENUCOLOR=" cursed.* (blindfold|towel)"=lightgreen&underline
+MENUCOLOR=" stethoscope"=lightgreen
+MENUCOLOR=" cursed.* stethoscope"=lightgreen&underline
+
+MENUCOLOR=" pick-axe[^[]*$"=green
+MENUCOLOR=" cursed.* pick-axe"=green&underline
+MENUCOLOR=" (key|lock pick|osaku)"=green
+MENUCOLOR=" can of grease"=green
+MENUCOLOR=" cursed.* can of grease"=green&underline
+
+MENUCOLOR=" (oilskin|sack)"=lightcyan
+MENUCOLOR=" tinning kit"=lightcyan
+MENUCOLOR=" cursed.* tinning kit"=lightcyan&underline
+MENUCOLOR=" (magic whistle|whistle called magic)"=lightcyan
+MENUCOLOR=" tin whistle"=brown
+MENUCOLOR=" called tin"=brown
+MENUCOLOR=" tin opener"=brown
+
+# Foodstuffs
+MENUCOLOR=" lumps? of royal jelly"=lightmagenta
+MENUCOLOR=" tins? of (spinach|.*giant meat)"=lightmagenta
+MENUCOLOR=" lizard corpse"=lightgreen
+MENUCOLOR=" (food |K-|C-|cram )ration"=green
+MENUCOLOR=" (gunyoki|lembas wafer)"=green
+MENUCOLOR=" tripe ration"=lightcyan
+
+#MENUCOLOR=" fortune cookie"=yellow
+MENUCOLOR=" c(hi|o)ckatrice corpse"=yellow
+MENUCOLOR=" tins? of c(hi|o)ckatrice"=yellow
+MENUCOLOR=" cockatrice egg"=yellow
+
+MENUCOLOR=" (slime mold|candied|cookie)"=green
+
+# Amulets
+MENUCOLOR=" amulet .* life saving"=lightgreen
+MENUCOLOR=" cursed amulet .* life saving"=lightgreen&underline
+MENUCOLOR=" amulet .* reflect"=lightgreen
+MENUCOLOR=" amulet .* ESP"=lightcyan
+MENUCOLOR=" amulet .* (strang|sleep|change)"=orange
+
+# Rings
+MENUCOLOR=" ring .* free action"=lightgreen
+MENUCOLOR=" ring .* slow digest"=green
+MENUCOLOR=" ring .* conflict"=green
+MENUCOLOR=" ring .* levitation"=green
+MENUCOLOR=" ring .* teleport control"=green
+MENUCOLOR=" ring .* regeneration"=green
+MENUCOLOR=" ring .* polymorph"=lightcyan
+MENUCOLOR=" ring .* polymorph control"=lightcyan
+
+# Wands
+MENUCOLOR=" wand (of|called) (wish|death|poly)"=lightmagenta
+MENUCOLOR=" wand (of|called) (teleport|digging)"=lightgreen
+MENUCOLOR=" wand (of|called) (fire|cold|lightning|sleep)"=green
+MENUCOLOR=" wand (of|called) (secret door|create monster|enlighten)"=lightcyan
+MENUCOLOR=" wand (of|called) nothing"=brown
+
+# Scrolls
+MENUCOLOR=" scrolls? .* genocide"=lightmagenta
+MENUCOLOR=" cursed scrolls? .* genocide"=lightmagenta&underline
+MENUCOLOR=" scrolls? .* enchant (armor|weapon)"=magenta
+MENUCOLOR=" cursed scrolls? .* enchant (armor|weapon)"=magenta&underline
+MENUCOLOR=" scrolls? .* teleport"=lightgreen
+MENUCOLOR=" cursed scrolls? .* teleport"=lightgreen&underline
+MENUCOLOR=" scrolls? .* remove curse"=green
+MENUCOLOR=" cursed scrolls? .* remove curse"=green&underline
+MENUCOLOR=" scrolls? .* identify"=green
+MENUCOLOR=" cursed scrolls? .* identify"=green&underline
+
+MENUCOLOR="scrolls? .* scare monster"=lightcyan
+MENUCOLOR="scrolls? .* magic mapping"=lightcyan
+MENUCOLOR="scrolls? .* gold detection"=lightcyan
+MENUCOLOR="scrolls? .* taming"=lightcyan
+MENUCOLOR="scrolls? .* charging"=lightcyan
+
+MENUCOLOR=" unlabeled scroll"=white
+MENUCOLOR=" plain spellbook"=white
+MENUCOLOR=" blank paper"=white
+MENUCOLOR=" blessed unlabeled scroll"=lightcyan
+MENUCOLOR=" blessed plain spellbook"=lightcyan
+MENUCOLOR=" blessed .* blank paper"=lightcyan
+MENUCOLOR=" cursed unlabeled scroll"=orange
+MENUCOLOR=" cursed plain spellbook"=orange
+MENUCOLOR=" cursed .* blank paper"=orange
+
+# Potions
+MENUCOLOR=" potions? .* (gain ability|enlightenment)"=magenta
+MENUCOLOR=" potions? .* healing"=green
+MENUCOLOR=" potions? .* full healing"=lightgreen
+MENUCOLOR=" potions? .* gain (level|energy)"=lightcyan
+MENUCOLOR=" potions? .* speed"=lightcyan
+MENUCOLOR=" (smoky potion|potions? .* smoky)"=magenta
+MENUCOLOR=" blessed (smoky potion|potions? .* smoky)"=lightmagenta
+#MENUCOLOR=" potions? .* (conf|hallu|blind)"=brown
+MENUCOLOR=" potions? .* acid"=brown
+
+MENUCOLOR=" clear potion"=white
+MENUCOLOR=" potions? .* water"=white
+MENUCOLOR=" blessed clear potion"=lightcyan
+MENUCOLOR=" blessed potions? .* water"=lightcyan
+MENUCOLOR=" holy water"=lightcyan
+MENUCOLOR=" cursed clear potion"=orange
+MENUCOLOR=" cursed potions? .* water"=orange
+MENUCOLOR=" unholy water"=orange
+
+# Rocks 'n stuff
+MENUCOLOR=" (luckstone|stones? .* luck|Heart of Ahriman)"=lightgreen
+MENUCOLOR=" cursed (luckstone|stones? .* luck|Heart of Ahriman)"=lightgreen&underline
+MENUCOLOR=" (touchstone|stones? .* touch)"=lightcyan
+MENUCOLOR=" flint stone"=lightcyan
+MENUCOLOR=" rocks?( \(.*\))?$"=brown
+MENUCOLOR=" worthless"=brown
+MENUCOLOR=" (loadstone|stones? called load)"=orange
+
+# Artifacts R Us
+MENUCOLOR=" (Orb of Detection|Sceptre of Might|Magic Mirror of Merlin)"=lightgreen
+MENUCOLOR=" (Magicbane|Eyes of the Overworld)"=lightgreen
+MENUCOLOR=" (Orb of Fate|Aethiopica|Yendorian Express)"=lightgreen
+MENUCOLOR=" (Master Key of Thievery|Longbow of Diana)"=lightgreen
+
+MENUCOLOR=" (Bell of Opening|silver bell|[Cc]andelabrum|Book of the Dead|papyrus spellbook)"=yellow
+MENUCOLOR=" Amulet of Yendor"=orange
+MENUCOLOR=" Amulet of Yendor named"=yellow&underline
+
+# Unstashables
+MENUCOLOR=" bag .* holding"=yellow
+MENUCOLOR=" cursed bag .* holding"=yellow&underline
+MENUCOLOR=" (sack|bag).* named cancel"=yellow
+MENUCOLOR=" bag .* tricks( \([0-9]+:[1-9][0-9]*\))?$"=yellow
+MENUCOLOR=" wand .*(cancel|vanish)"=yellow
+# Looting
+MENUCOLOR="is empty. Do what\?"=white&none
+MENUCOLOR="Put something into .*"=white&none
+MENUCOLOR="Take something out of .*"=white&none
+
+##
+## rsarson is a beast
+##
+## SPELL FAILURE RATES ##
+MENUCOLOR="0% "=green
+MENUCOLOR="[1-9]% "=lightgreen
+MENUCOLOR="1[0-3]% "=lightgreen
+MENUCOLOR="1[4-9]% "=yellow
+MENUCOLOR="2[0-7]% "=yellow
+MENUCOLOR="2[8-9]% "=yellow
+MENUCOLOR="3[0-9]% "=yellow
+MENUCOLOR="4[01]% "=yellow
+MENUCOLOR="4[2-9]% "=orange
+MENUCOLOR="5[0-6]% "=orange
+MENUCOLOR="5[7-9]% "=orange
+MENUCOLOR="6[0-9]% "=orange
+MENUCOLOR="70%"=orange
+MENUCOLOR="7[1-9]% "=red
+MENUCOLOR="8[0-4]% "=red
+MENUCOLOR="8[5-9]% "=red&underline
+MENUCOLOR="9[0-9]% "=red&underline
+MENUCOLOR="100% "=red&inverse
+
+## FORGOTTEN SPELL ##
+MENUCOLOR="\(gone\)"=magenta
+
+## ENHANCE ##
+# eventually enhanceable #
+MENUCOLOR="^ +[a-z -]+ +\[?(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]?"=red
+# ready to enhance #
+MENUCOLOR="^[a-z] - +[a-z -]+ +\[?(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]?"=green
+# may be enhanced when you're more experienced #
+MENUCOLOR="^ +\* +[a-z -]+ +\[?(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]?"=yellow
+# cannot be enhanced any further #
+MENUCOLOR="^ +# +[a-z -]+ +\[?(Unskilled|Basic|Skilled|Expert|Master|Grand Master)\]?"=magenta
+
+# Force colors
+MENUCOLOR="\{R\}"=red
+MENUCOLOR="\{B\}"=blue
+MENUCOLOR="\{C\}"=cyan
+MENUCOLOR="\{G\}"=green
+MENUCOLOR="\{Y\}"=yellow
+MENUCOLOR="\{[MP]\}"=magenta
+MENUCOLOR="\{O\}"=orange
+MENUCOLOR="\{W\}"=white
+MENUCOLOR="\{L\}"=black
+MENUCOLOR="\{y\}"=gray
+#MENUCOLOR="\{g\}"=lightgreen
+#MENUCOLOR="\{b\}"=lightblue
+#MENUCOLOR="\{[mp]\}"=lightmagenta
+#MENUCOLOR="\{c\}"=lightcyan
+#MENUCOLOR="\{N\}"=&none
+#MENUCOLOR="\{X\}"=&bold
+#MENUCOLOR="\{x\}"=&dim
+#MENUCOLOR="\{U\}"=&underline
+#MENUCOLOR="\{I\}"=&inverse
+#MENUCOLOR="\{K\}"=&blink
+
+### Hilites
+  OPTIONS=statushilites
+
+## HP
+    OPTIONS=hitpointbar
+    OPTIONS=hilite_status:hitpoints/100%/grey&normal
+    OPTIONS=hilite_status:hitpoints/<100%/green&normal
+    OPTIONS=hilite_status:hitpoints/<66%/yellow&normal
+    OPTIONS=hilite_status:hitpoints/<50%/orange&normal
+    OPTIONS=hilite_status:hitpoints/<33%/red&bold
+    OPTIONS=hilite_status:hitpoints/<15%/red&inverse
+
+## Pw
+    OPTIONS=hilite_status:power/100%/grey&normal
+    OPTIONS=hilite_status:power/<100%/green&normal
+    OPTIONS=hilite_status:power/<66%/yellow&normal
+    OPTIONS=hilite_status:power/<50%/orange&normal
+    OPTIONS=hilite_status:power/<33%/red&bold
+
+## Gold
+    OPTION=hilite_status: gold/up/yellow/down/brown
+
+## Str, Con, Dex, Int, Wis, Cha
+    OPTIONS=hilite_status:characteristics/up/green/down/red
+
+## Health
+    OPTIONS=hilite_status:condition/termill/red&inverse
+    OPTIONS=hilite_status:condition/foodpois/red&inverse
+    OPTIONS=hilite_status:condition/slime/red&inverse
+
+## Carry
+    OPTIONS=hilite_status:cap/burdened/yellow/stressed/orange/strained/red&bold/overtaxed/red&inverse/overloaded/red&inverse&blink
+
+## Hunger
+    OPTIONS=hilite_status:hunger/satiated/yellow/hungry/orange/weak/red&bold/fainting/red&inverse/fainted/red&inverse&blink
+
+## Mental
+    OPTIONS=hilite_status:condition/hallu/yellow&inverse
+    OPTIONS=hilite_status:condition/conf/orange&inverse
+    OPTIONS=hilite_status:condition/stun/red&bold&inverse
+
